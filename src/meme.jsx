@@ -20,6 +20,14 @@ function Meme() {
       }));
    }
 
+   const handleChange = (event) => {
+      const { name, value } = event.target;
+      setMeme((prevMeme) => ({
+         ...prevMeme,
+         [name]: value,
+      }));
+   };
+
    return (
       <div className="w-full">
          <div className="flex gap-5 mt-10">
@@ -29,6 +37,9 @@ function Meme() {
                   type="text"
                   placeholder="Top text "
                   className="border-[#D1D5DB] border-2 p-2 w-[300px]"
+                  name="topText"
+                  value={meme.topText}
+                  onChange={handleChange}
                />
             </label>
             <label className="flex flex-col my-6">
@@ -37,6 +48,9 @@ function Meme() {
                   type="text"
                   placeholder="Bottom text "
                   className="border-[#D1D5DB] border-2 p-2 w-[300px]"
+                  name="bottomText"
+                  value={meme.bottomText}
+                  onChange={handleChange}
                />
             </label>
          </div>
@@ -53,11 +67,11 @@ function Meme() {
                src={meme.randomImage}
                alt="memeImage"
             />
-            <h2 className="top-6 absolute w-full font-extraboldS text-3xl text-center text-white uppercase">
-               Top text
+            <h2 className="top-6 absolute w-full font-extraboldS text-5xl text-center text-white uppercase">
+               {meme.topText}
             </h2>
-            <h2 className="bottom-6 absolute w-full font-extraboldS text-3xl text-center text-white uppercase">
-               Bottom text
+            <h2 className="bottom-6 absolute w-full font-extraboldS text-5xl text-center text-white uppercase">
+               {meme.bottomText}
             </h2>
          </div>
       </div>
